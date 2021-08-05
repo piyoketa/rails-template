@@ -1,0 +1,47 @@
+version: "3"
+services:
+  db:
+    image: postgres
+    volumes:
+      - psgl_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: password
+    ports:
+      - 5432:5432
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: /bin/sh -c "rm -f tmp/pids/server.pid"
+    tty: true
+    stdin_open: true
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+  smtp:
+    image: schickling/mailcatcher
+    ports:
+      - "1080:1080"
+      - "1025:1025"
+  redis:
+    image: redis:4.0.14
+    ports:
+      - "6379:6379"
+    command: redis-server
+  # worker:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   depends_on:
+  #     - redis
+  #   volumes:
+  #     - .:/app
+  #   environment:
+  #     - REDIS_URL=redis://redis:6379
+  #   command: sidekiq
+volumes:
+  psgl_data:

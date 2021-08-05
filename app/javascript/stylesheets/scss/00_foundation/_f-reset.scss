@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6rem;
+    /* 16px*/
+    font-family: "游ゴシック", "Yu Gothic";
+    font-family: "游ゴシック", Yu Gothic;
+    font-weight: 500;
+    min-height: 100vh;
+    display: flex;
+    flex-flow: column;
+}
+
+main {
+    flex: 1;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    appearance: none;
+    border: 0;
+    border-radius: 0;
+    background-color: $main-white;
+}

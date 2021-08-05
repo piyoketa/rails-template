@@ -1,0 +1,20 @@
+@startuml er-diagrams
+' 注意！
+' ここに機密情報を描かないでください。
+' https://www.plantuml.com/plantuml にデータが共有されています
+
+class Example << (E,green) >> {
+  このクラスの説明
+  ---
+  リレーション
+  ---
+  + プロパティ NULL不可
+  - プロパティ NULL可
+  ---
+  + メソッド public
+  - メソッド private
+  ---
+  スコープ
+}
+
+@enduml

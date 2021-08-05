@@ -1,0 +1,25 @@
+//ブレークポイント(メディアクエリ用)
+$break-max: (
+    "sm": "screen and (max-width: 575px)",
+    "md": "screen and (max-width: 767px)",
+    "lg": "screen and (max-width: 991px)",
+    "xl": "screen and (max-width: 1199px)",
+) !default;
+
+$break-min: (
+    "sm": "screen and (min-width: 576px)",
+    "md": "screen and (min-width: 768px)",
+    "lg": "screen and (min-width: 992px)",
+    "xl": "screen and (min-width: 1200px)",
+) !default;
+
+@mixin mq_max($breakpoint) {
+    @media #{map-get($break-max, $breakpoint)} {
+        @content;
+    }
+}
+@mixin mq_min($breakpoint) {
+    @media #{map-get($break-min, $breakpoint)} {
+        @content;
+    }
+}

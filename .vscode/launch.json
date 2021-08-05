@@ -1,0 +1,62 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            // Rails serverを起動し、ログをデバッグコンソールで見る場合
+            "name": "Rails Server",
+            "type": "Ruby",
+            "request": "launch",
+            "cwd": "${workspaceRoot}",
+            "program": "bin/rails",
+            "args": [
+                "s",
+                "-b",
+                "0.0.0.0",
+                "-p",
+                "3000"
+            ],
+        },
+        {
+            // byebugなどを使うために、teminalでRails serverを起動し、そのRails ServerにDebuggerをアタッチしたい場合
+            // bundle exec rdebug-ide --debug --host 0.0.0.0 --port 1234 -- bin/rails server -p 3000 -b 0.0.0.0
+            // コード中に byebug を仕込むことでコマンドラインデバッグできる 参考: https://qiita.com/aosho235/items/6f988a0b5262b95ca460
+            "name": "Debug Attach",
+            "type": "Ruby",
+            "request": "attach",
+            "cwd": "${workspaceRoot}",
+            "remoteWorkspaceRoot": "/workspace",
+            "remoteHost": "0.0.0.0",
+            "remotePort": "1234"
+        },
+        {
+            "name": "RSpec 全部",
+            "type": "Ruby",
+            "request": "launch",
+            "cwd": "${workspaceRoot}",
+            "program": "bin/rspec",
+            "args": [
+                "-I",
+                "${workspaceRoot}/spec",
+                "-f",
+                "documentation",
+                "${workspaceRoot}/spec"
+            ],
+            "internalConsoleOptions": "openOnSessionStart"
+        },
+        {
+            "name": "RSpec 選択した行",
+            "type": "Ruby",
+            "request": "launch",
+            "cwd": "${workspaceRoot}",
+            "program": "bin/rspec",
+            "args": [
+                "-I",
+                "${workspaceRoot}/spec",
+                "-f",
+                "documentation",
+                "${file}:${lineNumber}"
+            ],
+            "internalConsoleOptions": "openOnSessionStart"
+        }
+    ]
+}

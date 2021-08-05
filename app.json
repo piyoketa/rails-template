@@ -1,0 +1,48 @@
+{
+    "addons": [
+        "heroku-postgresql",
+        "papertrail"
+    ],
+    "buildpacks": [
+        {
+            "url": "heroku/ruby"
+        }
+    ],
+    "env": {
+        "LANG": {
+            "required": true
+        },
+        "RACK_ENV": {
+            "required": true
+        },
+        "RAILS_ENV": {
+            "required": true
+        },
+        "RAILS_LOG_TO_STDOUT": {
+            "required": true
+        },
+        "RAILS_SERVE_STATIC_FILES": {
+            "required": true
+        },
+        "SECRET_KEY_BASE": {
+            "required": true
+        },
+        "DEFAULT_URL_HOST": {
+            "required": true
+        },
+        "CONNECT_BASIC_AUTH": {
+            "required": true
+        },
+        "CONNECT_BASIC_AUTH_PASSWORD": {
+            "required": true
+        },
+        "CONNECT_BASIC_AUTH_USERNAME": {
+            "required": true
+        }
+    },
+    "name": "rails-template",
+    "scripts": {
+        "postdeploy": "bundle exec rake db:migrate"
+    },
+    "stack": "heroku-20"
+}
